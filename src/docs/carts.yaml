@@ -1,0 +1,256 @@
+paths:
+  /api/carts:
+    get:
+      summary: Get all carts.
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: All carts obtained.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "500":
+          description: Server error.
+    post:
+      summary: Create a new cart
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: Cart created succesfully.
+        "500":
+          description: Server error.
+  
+  /api/carts/{CartId}:
+    get:
+      summary: Get the cart with named id
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart you want to get.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Cart obtained.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "404":
+          description: The cart was not found.
+        "500":
+          description: Server error.
+    put:
+      summary: Update the entire products array of the cart with named id.
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart you want to update.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Cart updated.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "404":
+          description: The cart was not found.
+        "500":
+          description: Server error.
+    delete:
+      summary: Empty the cart with named id.
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart you want to empty.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Cart emptied.
+        "404":
+          description: The cart was not found.
+        "500":
+          description: Server error.
+
+
+  /api/carts/{CartId}/products/{ProductId}:
+    post:
+      summary: Add product with named id to cart with named id.
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart.
+          schema:
+            $type: String
+        - name: ProductId
+          in: path
+          required: true
+          description: This is the id of the product you want to add to the cart.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Product added to cart.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "404":
+          description: The cart or the product was not found.
+        "500":
+          description: Server error.
+    put:
+      summary: Update the quantity of a product inside the product array of the cart with named id.
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart.
+          schema:
+            $type: String
+        - name: ProductId
+          in: path
+          required: true
+          description: This is the id of the product of which you want to update its quantity.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Cart and product quantity updated.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "404":
+          description: The cart or the product was not found.
+        "500":
+          description: Server error.
+    delete:
+      summary: Delete the product from the cart with named id.
+      tags:
+        - Carts
+      parameters:
+        - name: CartId
+          in: path
+          required: true
+          description: This is the id of the cart.
+          schema:
+            $type: String
+        - name: ProductId
+          in: path
+          required: true
+          description: This is the id of the product you want to delete from the cart.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Product was deleted from cart.
+        "404":
+          description: The cart or the product was not found.
+        "500":
+          description: Server error.
+
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Mongo document Id.
+        products:
+          type: array
+          description: Array of products contained in the cart.
+          items:
+            type: object
+            properties:
+              product:
+                $ref: '#/components/schemas/Product'
+              quantity:
+                type: integer
+                description: The quantity of the product in the cart.
+      example:
+        _id: ObjectId('64bf188801574abb33ba45eb')
+        products:
+          - product:
+              title: Sample Product 1
+              category: Sample Category
+              description: Sample Product Description
+              price: 19.99
+              thumbnail: sample-thumbnail.jpg
+              code: PROD123
+              stock: 50
+              owner: johndoe@outerspace.com
+            quantity: 2
+          - product:
+              title: Sample Product 2
+              category: Another Category
+              description: Another Product Description
+              price: 29.99
+              thumbnail: another-thumbnail.jpg
+              code: PROD456
+              stock: 30
+              owner: admin
+            quantity: 1
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+        title:
+          type: string
+        category:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        thumbnail:
+          type: string
+        code:
+          type: string
+        stock:
+          type: number
+        owner:
+          type: string
+      example:
+        _id: ObjectId('64bf188801574abb33ba45eb')
+        title: Men's Leather Jacket
+        category: Men's Clothing
+        description: The color could be slightly different between on the screen and in practice.
+        price: 59
+        thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+        code: fG6KO
+        stock: 33
+        owner: johndoe@outerspace.com

@@ -1,0 +1,133 @@
+[
+    {
+        "title": "Seven Up Uno",
+        "description": "Light updated",
+        "price": 950,
+        "thumbnail": "imgSeven",
+        "category": "Bebida alcoholica",
+        "code": "c501",
+        "stock": 100,
+        "id": 1
+    },
+    {
+        "title": "Coca Cola Dos",
+        "description": "Light",
+        "price": 950,
+        "thumbnail": "imgCoca",
+        "code": "c501",
+        "stock": 100,
+        "id": 2
+    },
+    {
+        "title": "Fanta Tres",
+        "description": "Gaseosa",
+        "price": 680,
+        "thumbnail": "imgFanta",
+        "code": "c505",
+        "stock": 300,
+        "id": 3
+    },
+    {
+        "title": "Agua Cuatro",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c506",
+        "stock": 26000,
+        "id": 4
+    },
+    {
+        "title": "Agua Cinco",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c507",
+        "stock": 26000,
+        "id": 5
+    },
+    {
+        "title": "Agua Seis",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c508",
+        "stock": 26000,
+        "id": 6
+    },
+    {
+        "title": "Agua Siete",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c509",
+        "stock": 26000,
+        "id": 7
+    },
+    {
+        "title": "Agua Ocho",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c510",
+        "stock": 26000,
+        "id": 8
+    },
+    {
+        "title": "Agua Nueve",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c511",
+        "stock": 26000,
+        "id": 9
+    },
+    {
+        "title": "Agua Diez",
+        "description": "Sin Gas",
+        "price": 230,
+        "thumbnail": "imgAgua",
+        "code": "c512",
+        "stock": 26000,
+        "id": 10
+    },
+    {
+        "title": "Vino 11",
+        "description": "Sin Gas",
+        "price": 500,
+        "thumbnail": "imgVino",
+        "code": "c513",
+        "stock": 26000,
+        "id": 11
+    },
+    {
+        "title": "Vino 12",
+        "description": "Sin Gas",
+        "price": 800,
+        "status": true,
+        "thumbnail": "imgVino",
+        "code": "c514",
+        "stock": 26000,
+        "id": 12
+    },
+    {
+        "title": "Vino XXX",
+        "description": "Sin Gas",
+        "price": 800,
+        "status": true,
+        "thumbnail": "imgVino",
+        "code": "c515",
+        "stock": 26000,
+        "id": 13
+    },
+    {
+        "title": "Cerveza",
+        "description": "IPA",
+        "price": 444,
+        "status": true,
+        "thumbnail": "imgVino",
+        "category": "Bebida alcoholica",
+        "code": "c520",
+        "stock": 26000,
+        "id": 15
+    }
+]

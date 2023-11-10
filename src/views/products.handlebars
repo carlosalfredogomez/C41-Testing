@@ -1,0 +1,29 @@
+<h2>PRODUCTS VIEW</h2>
+<a href='http://localhost:8080/'> <button> Home </button></a>
+<h3>Welcome {{user.name}}</h3>
+<button style="width: 120px" id="logout">Logout </button>
+{{#each products}}
+<section>
+  <div>
+  <h5>{{title}}</h5>
+  <p>{{description}}</p>
+  <h5>{{price}}</h5>
+  <button id="addToCart" style="width: 120px" type="submit" data-product-id="{{_id}}" <!-- Add the product's ID as a
+    data attribute -->
+    >Add to cart</button>
+    </div>
+</section>
+{{/each}}
+{{! validacion de queries para el handlebar, limit SIEMPRE llega, porque lo valida el router}}
+<div style="flex-direction: row;justify-content: space-around">
+  {{#if hasPrevPage}}
+  <a
+    href="http://localhost:8080/products/?limit={{limit}}&sort={{sort}}&page={{prevPage}}{{#if category}}&category={{category}}{{/if}}"><button>Next Page</button></a>
+  {{/if}}
+  {{#if hasNextPage}}
+  <a
+    href="http://localhost:8080/products/?limit={{limit}}&sort={{sort}}&page={{nextPage}}{{#if category}}&category={{category}}{{/if}}"><button>Previous Page</button></a>
+  {{/if}}
+</div>
+<script src="/js/addToCart.js"></script>
+<script src="/js/logout.js"></script>

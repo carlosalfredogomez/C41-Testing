@@ -1,0 +1,257 @@
+paths:
+#------------------------------------------------/API/PRODUCTS---------#
+
+  /api/products:
+
+#--------------------------------GET---------#
+
+    get:
+      summary: Get all products.
+      tags:
+        - Products
+      responses:
+        "200":
+          description: All products obtained.
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Array containing all products.
+                items:
+                  type: object
+                  description: Product.
+                  $ref: '#components/schemas/Product'
+              example:
+                  - _id: ObjectId('64bf188801574abb33ba45eb')
+                    title: Men's Leather Jacket
+                    category: Men's Clothing
+                    description: The color could be slightly different between on the screen and in practice.
+                    price: 59
+                    thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+                    code: fG6KO
+                    stock: 33
+                    owner: johndoe@outerspace.com
+                  - _id: ObjectId('64bf188801574abb33ba45ec')
+                    title: Women's Leather Jacket
+                    category: Women's Clothing
+                    description: A stylish leather jacket for women.
+                    price: 69.99
+                    thumbnail: https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg
+                    code: wJ7PL
+                    stock: 28
+                    owner: janedoe@example.com
+        "500":
+          description: Server error.
+
+#--------------------------------POST---------#
+
+    post:
+      summary: Create a new product
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Product created succesfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: A message, with info about operation.
+                  payload:
+                    description: The created product.
+                    $ref: '#components/schemas/Product' # Reference the Product schema
+              example:
+                message: Product updated.
+                payload:
+                  _id: ObjectId('64bf188801574abb33ba45eb')
+                  title: Men's Leather Jacket
+                  category: Men's Clothing
+                  description: The color could be slightly different between on the screen and in practice.
+                  price: 59
+                  thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+                  code: fG6KO
+                  stock: 33
+                  owner: johndoe@outerspace.com     
+        "500":
+          description: Server error.
+
+#------------------------------------------------/API/PRODUCTS/{ProductId}---------#
+
+  /api/products/{ProductId}:
+
+#--------------------------------GET---------#
+
+    get:
+      summary: Get the product with named id
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: This is the id of the product you want to get.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Product obtained.
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Product'
+        "404":
+          description: The product was not found.
+        "500":
+          description: Server error.
+
+#--------------------------------PUT---------#
+
+    put:
+      summary: Update the product with named id.
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: This is the id of the product you want to update.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Product updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: A message, with info about operation.
+                  payload:
+                    description: The updated product.
+                    $ref: '#components/schemas/Product' # Reference the Product schema
+              example:
+                message: Product updated.
+                payload:
+                  _id: ObjectId('64bf188801574abb33ba45eb')
+                  title: Men's Leather Jacket
+                  category: Men's Clothing
+                  description: The color could be slightly different between on the screen and in practice.
+                  price: 59
+                  thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+                  code: fG6KO
+                  stock: 33
+                  owner: johndoe@outerspace.com
+        "404":
+          description: The product was not found.
+        "500":
+          description: Server error.
+
+#--------------------------------DELETE---------#
+
+    delete:
+      summary: Delete the product with named id.
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: This is the id of the product you want to delete.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Product deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: A message, with info about operation.
+                  payload:
+                    description: The deleted product.
+                    $ref: '#components/schemas/Product' # Reference the Product schema
+              example:
+                message: Product deleted.
+                payload:
+                  # Me gustaria poder referenciar el componente de producto para que ponga el ejemplo,
+                  # pero por alguna razon, no se puede. Entonces se hardcodea.
+                  _id: ObjectId('64bf188801574abb33ba45eb')
+                  title: Men's Leather Jacket
+                  category: Men's Clothing
+                  description: The color could be slightly different between on the screen and in practice.
+                  price: 59
+                  thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+                  code: fG6KO
+                  stock: 33
+                  owner: johndoe@outerspace.com
+        "404":
+          description: The product was not found.
+        "500":
+          description: Server error.
+
+#------------------------------------------------COMPONENTS---------#
+
+components:
+  schemas:
+
+#--------------------------------PRODUCT---------#
+
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Mongo document Id.
+        title:
+          type: String
+          required: true
+          description: Title of the product.
+        category:
+          type: String
+          required: true
+          description: Category of the product.
+        description:
+          type: String
+          required: true
+          description: Description of the product.
+        price:
+          type: Number
+          required: true
+          description: Price of the product.
+        thumbnail:
+          type: String
+          required: true
+          description: Url of the product thumbnail.
+        code:
+          type: String
+          required: true
+          description: Unique code of the product.
+        stock:
+          type: Number
+          required: true
+          description: Stock of the product.
+        owner:
+          type: String
+          required: true
+          description: If premium user, then email. If admin, admin.
+
+#---------------PRODUCT EXAMPLE---------#
+
+      example:
+        _id: ObjectId('64bf188801574abb33ba45eb')
+        title: Men's Leather Jacket
+        category: Men's Clothing
+        description: The color could be slightly different between on the screen and in practice.
+        price: 59
+        thumbnail: https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg
+        code: fG6KO
+        stock: 33
+        owner: johndoe@outerspace.com

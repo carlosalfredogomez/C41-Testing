@@ -1,0 +1,72 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://res.cloudinary.com/dfrvbm0im/image/upload/v1690351271/lofiwall_vrww9q.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    background-color: #588956;
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid #0b360d;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+p {
+    color: rgb(65, 19, 19)
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    background-color: #588956;
+    margin: 15px;
+    padding: 5px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #0b360d;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.linksContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #1f1e7163;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+}

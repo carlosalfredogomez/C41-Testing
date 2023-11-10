@@ -1,0 +1,12 @@
+<h1>Live Chat</h1>
+<a href="http://localhost:8080/"> <button> Home </button></a>
+<h3>Chat</h3>
+<h5>{{userName}}'s mail is</h5>
+<h5 id="userEmail">{{userEmail}}</h5>
+<input type="email" id="chatBox" />
+<div>
+  <p id="messageLogs" style="color:rgb(64, 65, 35)"></p>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

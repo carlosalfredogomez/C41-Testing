@@ -1,0 +1,24 @@
+<h2>Enter the Rhino Realm</h2>
+<section>
+  <h3>Login</h3>
+  {{#if session.current}}
+    <p>You are already logged in as {{session.name}}</p>
+    <button style="width: 120px" id="logout">Logout </button>
+    <script src="/js/logout.js"></script>
+  {{else}}
+    <form id="loginForm">
+      <label>Email</label>
+      <input name="email" />
+      <br />
+      <label>Password</label>
+      <input type="password" name="password" />
+      <input type="submit" />
+    </form>
+    <p>Forgot your password? <a href="/password-recovery-request">RESET YOUR PASSWORD</a></p>
+    <br />
+    <p>Are you not registered? <a href="/register">Register Here</a></p>
+    <a href="/api/sessions/github"><button>Authenticate with GitHub</button></a>
+  {{/if}}
+</section>
+<a href="http://localhost:8080/"><button>Home</button></a>
+<script src="/js/login.js"></script>

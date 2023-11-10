@@ -1,0 +1,21 @@
+<h2> CARTS </h2>
+<a href="http://localhost:8080/"> <button> Home </button></a>
+<button style="width: 120px" id="logout">Logout </button>
+{{#each carts}}
+  <div>
+    <h5>Carrito ID: {{this._id}}</h5>
+    <ul>
+      <br />
+      <p>Products in Cart: </p>
+      <ul>
+        {{#each this.products}}
+          <li>Product: {{this.product.title}}</li>
+          <li>_id: {{this.product._id}}</li>
+          <li>Quantity: {{this.quantity}}</li>
+          <br />
+        {{/each}}
+      </ul>
+    </ul>
+  </div>
+{{/each}}
+<script src="/js/logout.js"></script>

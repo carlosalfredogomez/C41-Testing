@@ -1,0 +1,13 @@
+<h2> CART ID: {{cid}} </h2>
+<a href="http://localhost:8080/"> <button> Home </button></a>
+<button style="width: 120px" id="logout">Logout </button>
+{{#each products}}
+  <div>
+    <ul>
+      <li>Product Title: {{title}}</li>
+      <li>Price: {{price}}</li>
+      <li>Quantity: {{quantity}}</li>
+    </ul>
+  </div>
+{{/each}}
+<script src="/js/logout.js"></script>
